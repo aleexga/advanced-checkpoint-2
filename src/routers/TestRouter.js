@@ -1,34 +1,17 @@
 import express from "express";
+import TestController from "../controllers/TestController";
 
 const router = express.Router();
-// @FIXME: Remove disabling of rules
-/* eslint-disable no-unused-vars*/
 
 // Lists all events
-router.get("/api/events", (request, response, next) => {
-  console.log("List view is working");
-  return response.json("it works!");
-});
+router.get("/api/events", TestController.list);
 // Returns one event
-router.get("/api/events/:id", (request, response, next) => {
-  console.log("Detail view is working");
-  return response.json("it works!");
-});
+router.get("/api/events/:id", TestController.show);
 // Deletes one event
-router.delete("/api/events/:id", (request, response, next) => {
-  console.log("Delete view is working");
-  return response.json("it works!");
-});
+router.delete("/api/events/:id", TestController.delete);
 // Creates one event
-router.post("/api/events", (request, response, next) => {
-  console.log("Post view is working");
-  return response.json("it works!");
-});
+router.post("/api/events", TestController.create);
 // Updates one event
-router.put("/api/events/:id", (request, response, next) => {
-  console.log("Put view is working");
-  return response.json("it works!");
-});
-
+router.put("/api/events/:id", TestController.update);
 
 export default router;
