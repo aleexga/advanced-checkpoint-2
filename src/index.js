@@ -2,8 +2,19 @@ import next from "next";
 import path from "path";
 import express from "express";
 import TestRouter from "./routers/TestRouter";
+import mongoose from "mongoose";
 
 const dev = process.env.NODE_ENV !== "production";
+
+// mongoose installation
+mongoose.connect("mongodb://localhost/aca-checkpoint-2");
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("mongo connected successfully!")
+});
+
+// next.js installation
 const nextApp = next({
   dev,
   dir: path.resolve(__dirname)
